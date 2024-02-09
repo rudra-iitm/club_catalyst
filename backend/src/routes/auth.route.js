@@ -1,17 +1,10 @@
 import { Router } from "express";
+import { loginUser, logoutUser } from "../controllers/user.controller.js";
 
 const router = Router();
 
-router.post('/login', (req, res) => {
-    res.json({
-        msg: " Authenticate users and generate JWT token"
-    });
-})
+router.post('/login', loginUser)
 
-router.post('/logout', (req, res) => {
-    res.json({
-        msg: "Logout user and invalidate token"
-    });
-})
+router.post('/logout', logoutUser)
 
 export default router;
