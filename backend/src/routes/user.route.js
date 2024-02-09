@@ -2,10 +2,24 @@ import { Router } from "express";
 
 const router = Router();
 
-router.get('/register', (req, res) => {
-    console.log("Hello from user");
+router.get('/:id', (req, res) => {
+    const id = req.params['id'];
     res.json({
-        msg: "Hello from user route"
+        msg: "Get user details."
+    });
+})
+
+router.put('/:id', (req, res) => {
+    const id = req.params['id'];
+    res.json({
+        msg: `update user details ${id}`
+    });
+})
+
+router.delete('/:id', (req, res) => {
+    const id = req.params['id'];
+    res.json({
+        msg: `Delete user account ${id}`
     });
 })
 

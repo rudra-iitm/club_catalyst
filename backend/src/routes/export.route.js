@@ -2,9 +2,9 @@ import { Router } from "express";
 
 const router = Router();
 
-router.get('/', (req, res) => {
+router.get('/request', (req, res) => {
     res.json({
-        msg: "Get dashboard statistics and summaries"
+        msg: "Export request data to a spreadsheet"
     });
 })
 
