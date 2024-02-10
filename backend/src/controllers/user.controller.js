@@ -9,7 +9,7 @@ import crypto from 'crypto';
 
 //Register a user
 const registerUser = asyncHandler( async(req,res)=>{
-    const { name, username, email, password, role } = req.body;
+    const { name, username, email, password, role, club } = req.body;
 
     const user = await User.create({
         name,
@@ -17,6 +17,7 @@ const registerUser = asyncHandler( async(req,res)=>{
         email,
         password,
         role,
+        club,
         avatar:{
             public_id:"this is a sample id",
             url:"profilepicurl",
@@ -42,13 +43,13 @@ const loginUser = asyncHandler(  async (req,res) => {
     }).select("+password");
 
     if(!user){
-        return new ApiError(401, "Invalid email or password");
+        return res.json(new ApiError(401, "Invalid email or password"));
     }
 
     const isPasswordMatched = user.comparePassword(password);
 
     if(!isPasswordMatched){
-        return ApiError(401, "Invalid email or password");
+        return res.json(new ApiError(401, "Invalid email or password"));
     }
 
     sendToken(user,200,res);
@@ -93,7 +94,7 @@ const forgotPassword = asyncHandler( async(req,res) => {
     try {
         await sendEmail({
             email:user.email,
-            subject:`Ecommerce Password Recovery`,
+            subject:`Password Recovery`,
             message,
         });
 
@@ -125,7 +126,7 @@ const resetPassword = asyncHandler( async(req,res) => {
     }
 
     if(req.body.password!==req.body.confirmPassword){
-        return ApiError(400, "Password does not match");
+        return res.json(new ApiError(400, "Password does not match"));
     }
 
     user.password = req.body.password;
@@ -149,7 +150,6 @@ const getUserDetails = asyncHandler( async(req,res) => {
 });
 
 //Update User password
-
 const updatePassword = asyncHandler( async(req,res) => {
 
     const user = await User.findById(req.user.id).select("+password");
@@ -157,11 +157,11 @@ const updatePassword = asyncHandler( async(req,res) => {
     const isPasswordMatched = user.comparePassword(req.body.oldPassword);
 
     if(!isPasswordMatched){
-        return ApiError(400, "Old password is incorrect");
+        return res.json(ApiError(400, "Old password is incorrect"));
     }
 
     if(req.body.newPassword !== req.body.confirmPassword){
-        return ApiError(400, "Password does not match");
+        return res.json(ApiError(400, "Password does not match"));
     }
 
     user.password = req.body.newPassword;
@@ -186,7 +186,7 @@ const updateProfile = asyncHandler(async(req,res)=>{
         useFindAndModify:false,
     })
 
-    return new ApiResponse(200, {})
+    return res.json(new ApiResponse(200, {}));
 });
 
 //Get all users(admin)
@@ -194,17 +194,17 @@ const updateProfile = asyncHandler(async(req,res)=>{
 const getAllUser = asyncHandler( async(req,res) => {
     const users = await User.find();
 
-    return new ApiResponse(200, users);
+    return res.json(new ApiResponse(200, users));
 });
 
 const getSingleUser = asyncHandler( async(req,res) => {
     const user = await User.findById(req.params.id);
 
     if(!user){
-        return new ApiError(400, `User does not exist with ID : ${req.params.id}`);
+        return res.json(new ApiError(400, `User does not exist with ID : ${req.params.id}`));
     };
     
-    return new ApiResponse(200, user)
+    return res.json(new ApiResponse(200, user));
 });
 
 //Update User Role
@@ -229,13 +229,12 @@ const updateRole = asyncHandler(async(req,res) => {
 });
 
 //Delete User Data --Admin
-
 const deleteUser = asyncHandler(async(req,res)=>{
 
     const user = await User.findById(req.params.id);
 
     if(!user){
-        return ApiError(400, `User Doesn't exist with id ${req.params.id}`);
+        return res.json(ApiError(400, `User Doesn't exist with id ${req.params.id}`));
     }
 
     await user.deleteOne();

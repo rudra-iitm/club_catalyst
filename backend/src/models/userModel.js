@@ -31,6 +31,10 @@ const userSchema = new mongoose.Schema({
         type:String,
         default:"student",
     },
+    club: {
+        type: String,
+        required: false,
+    },
     resetPasswordToken: String,
     resetPasswordExpire: Date,
 });
