@@ -43,7 +43,7 @@ const recommendClubSec = asyncHandler( async(req, res) => {
 
         // Update request with secretary recommendation
         request.secretaryRecommendation = recommendation;
-        request.status = 'Recommended by Secretary';
+        request.recommend_status = 'Recommended by Secretary';
         await request.save();
 
         return res.status(200).json(ApiResponse(200, request, 'Recommendation added successfully'));
@@ -68,7 +68,7 @@ const approvedByFA = asyncHandler( async (req, res) => {
 
         // Update request with club FA approval
         request.clubFAApproval = approval;
-        request.status = 'Approved by Club FA';
+        request.approved_status = 'Approved by Club FA';
         await request.save();
 
         res.status(200).json({ message: 'Approval added successfully', request });
@@ -91,7 +91,7 @@ const recommendSocietyFA = asyncHandler( async(req, res) => {
         }
 
         request.societyFARecommendation = recommendation;
-        request.status = 'Recommended by Society FA';
+        request.recommend_status = 'Recommended by Society FA';
         await request.save();
 
         return res.status(200).json(ApiResponse(200, request, 'Recommendation added successfully'));
@@ -114,7 +114,7 @@ const approvedBySocietyFA = asyncHandler( async (req, res) => {
         }
 
         request.societyFAApproval = approval;
-        request.status = 'Approved by Society FA';
+        request.approved_status = 'Approved by Society FA';
         await request.save();
 
         res.status(200).json({ message: 'Approval added successfully', request });
@@ -137,7 +137,7 @@ const approvedByChairSAP = asyncHandler( async (req, res) => {
         }
 
         request.societyFAApproval = approval;
-        request.status = 'Approved by chairSAP';
+        request.approved_status = 'Approved by chairSAP';
         await request.save();
 
         res.status(200).json({ message: 'Approval added successfully', request });

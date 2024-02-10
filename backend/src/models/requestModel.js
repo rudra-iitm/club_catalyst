@@ -21,9 +21,22 @@ const requestSchema = new mongoose.Schema({
         type: [String],
         required: true
     },
-    status: {
+    secretaryRecommendation: {
         type: String,
-        enum: ['Pending', 'Approved', 'Rejected'],
+        required: false
+    },
+    societyFARecommendation: {
+        type: String,
+        required: false
+    },
+    recommend_status: {
+        type: String,
+        enum: ['None', "Recommended by Secretary", 'Recommended by Society FA', ],
+        default: 'None'
+    },
+    approved_status: {
+        type: String,
+        enum: ['Pending', 'Approved by Society FA', 'Approved by chairSAP', 'Approved by Club FA', 'Rejected'],
         default: 'Pending'
     }
 });
