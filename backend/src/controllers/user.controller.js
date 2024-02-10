@@ -17,7 +17,6 @@ const registerUser = asyncHandler( async(req,res)=>{
         email,
         password,
         role,
-        club,
         avatar:{
             public_id:"this is a sample id",
             url:"profilepicurl",
@@ -145,8 +144,7 @@ const resetPassword = asyncHandler( async(req,res) => {
 const getUserDetails = asyncHandler( async(req,res) => {
 
     const user = await User.findById(req.user.id);
-
-    return new ApiResponse(200, user)
+    return res.json(new ApiResponse(200,user));
 });
 
 //Update User password
