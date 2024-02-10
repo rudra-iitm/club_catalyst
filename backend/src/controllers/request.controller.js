@@ -33,10 +33,10 @@ const recommendClubSec = asyncHandler( async(req, res) => {
     try {
         const requestId = req.params.requestId;
         const recommendation = req.body.recommendation;
-
         // Find the request by ID
-        const request = await Request.findById(requestId);
 
+        const request = await Request.findById(requestId);
+    
         if (!request) {
             return new ApiError(404, "request not found");
         }
@@ -46,7 +46,7 @@ const recommendClubSec = asyncHandler( async(req, res) => {
         request.recommend_status = 'Recommended by Secretary';
         await request.save();
 
-        return res.status(200).json(ApiResponse(200, request, 'Recommendation added successfully'));
+        return res.status(200).json(new ApiResponse(200, request, 'Recommendation added successfully'));
     } catch (error) {
         console.error(error);
         return new ApiError(500, 'Internal server error');
