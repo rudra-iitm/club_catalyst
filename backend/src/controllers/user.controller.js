@@ -3,18 +3,20 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 
 import { ApiError } from "../utils/ApiError.js";
 import { sendToken } from '../utils/jwtToken.js'
-const User = require("../models/userModel");
-const sendEmail = require("../utils/sendEmail")
-const crypto = require("crypto");
+import { User } from '../models/userModel.js'
+import sendEmail from "../utils/sendEmail.js";
+import crypto from 'crypto';
 
 //Register a user
 const registerUser = asyncHandler( async(req,res)=>{
-    const {name,email,password} = req.body;
+    const { name, username, email, password, role } = req.body;
 
     const user = await User.create({
         name,
+        username,
         email,
         password,
+        role,
         avatar:{
             public_id:"this is a sample id",
             url:"profilepicurl",
@@ -23,7 +25,6 @@ const registerUser = asyncHandler( async(req,res)=>{
 
     sendToken(user,201,res);
 });
-
 
 //Login User
 
@@ -62,15 +63,14 @@ const logout = asyncHandler( async(req,res) => {
         httpOnly:true,
     });
     
-    res.status(200).json({
-        success:true,
-        message:"loggedout"
+    return new ApiResponse(200, {
+        msg: 'logged out succesfully',
     })
 })
 
 //forgot password
 
-const forgotPassword = asyncHandler( async(req,res,next) => {
+const forgotPassword = asyncHandler( async(req,res) => {
     const user = await User.findOne({
         username:req.body.username
     });
@@ -97,18 +97,19 @@ const forgotPassword = asyncHandler( async(req,res,next) => {
             message,
         });
 
-        res.status(200).json({
-            success:true,
-            message:`Email sent to ${user.email} successfully`
-        });
+        return new ApiResponse(200, {
+            msg: `Email sent to ${user.email} successfully`
+        })
 
     } catch (error) {
         user.resetPasswordToken = undefined;
         user.resetPasswordExpire = undefined;
 
-        await user.save({validateBeforeSave:false});
+        await user.save({
+            validateBeforeSave:false
+        });
 
-        return next(new ErrorHandler(error.message,500));
+        return api(500, error.message);
     }
 });
 
@@ -144,10 +145,7 @@ const getUserDetails = asyncHandler( async(req,res) => {
 
     const user = await User.findById(req.user.id);
 
-    res.status(200).json({
-        success:true,
-        user,
-    });
+    return new ApiResponse(200, user)
 });
 
 //Update User password
@@ -174,7 +172,7 @@ const updatePassword = asyncHandler( async(req,res) => {
 
 //Update User Profile
 
-const updateProfile = asyncHandler(async(req,res,next)=>{
+const updateProfile = asyncHandler(async(req,res)=>{
 
     const newUserData ={
         name :req.body.name,
@@ -188,9 +186,7 @@ const updateProfile = asyncHandler(async(req,res,next)=>{
         useFindAndModify:false,
     })
 
-    res.status(200).json({
-        success:true,
-    });
+    return new ApiResponse(200, {})
 });
 
 //Get all users(admin)
@@ -198,11 +194,7 @@ const updateProfile = asyncHandler(async(req,res,next)=>{
 const getAllUser = asyncHandler( async(req,res) => {
     const users = await User.find();
 
-    res.status(200).json({
-        success:true,
-        users,
-    });
-
+    return new ApiResponse(200, users);
 });
 
 const getSingleUser = asyncHandler( async(req,res) => {
@@ -212,11 +204,7 @@ const getSingleUser = asyncHandler( async(req,res) => {
         return new ApiError(400, `User does not exist with ID : ${req.params.id}`);
     };
     
-    res.status(200).json({
-        success:true,
-        user,
-    });
-
+    return new ApiResponse(200, user)
 });
 
 //Update User Role
@@ -242,7 +230,7 @@ const updateRole = asyncHandler(async(req,res) => {
 
 //Delete User Data --Admin
 
-const deleteUser = asyncHandler(async(req,res,next)=>{
+const deleteUser = asyncHandler(async(req,res)=>{
 
     const user = await User.findById(req.params.id);
 
@@ -256,3 +244,7 @@ const deleteUser = asyncHandler(async(req,res,next)=>{
         success:true,
     });
 });
+
+export {registerUser, loginUser, logout, forgotPassword, resetPassword, 
+    getAllUser, getSingleUser, getUserDetails , updateRole, deleteUser, updateProfile, updateRole,
+updatePassword, }
