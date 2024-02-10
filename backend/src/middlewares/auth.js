@@ -35,6 +35,12 @@ const authorizeRoles = (...roles) => {
 
 const isAuthorizedUser = asyncHandler( async(req, res) => {
     try {
+        const { token } = req.cookies;
+
+        if(!token){
+            return next(new ApiError(401))
+        }
+        
         const club = await Request.findById(req.params.requestId).club;
         const decodedData = jwt.verify(token,process.env.JWT_SECRET);
         req.user = await User.findById(decodedData.id);
