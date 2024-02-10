@@ -246,5 +246,5 @@ const deleteUser = asyncHandler(async(req,res)=>{
 });
 
 export {registerUser, loginUser, logout, forgotPassword, resetPassword, 
-    getAllUser, getSingleUser, getUserDetails , updateRole, deleteUser, updateProfile, updateRole,
+    getAllUser, getSingleUser, getUserDetails , updateRole, deleteUser, updateProfile,
 updatePassword, }
