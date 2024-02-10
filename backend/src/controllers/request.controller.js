@@ -36,7 +36,7 @@ const recommendClubSec = asyncHandler( async(req, res) => {
         // Find the request by ID
 
         const request = await Request.findById(requestId);
-    
+
         if (!request) {
             return new ApiError(404, "request not found");
         }
@@ -48,6 +48,7 @@ const recommendClubSec = asyncHandler( async(req, res) => {
 
         return res.status(200).json(new ApiResponse(200, request, 'Recommendation added successfully'));
     } catch (error) {
+        
         console.error(error);
         return new ApiError(500, 'Internal server error');
     }

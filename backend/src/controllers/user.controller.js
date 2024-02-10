@@ -17,10 +17,7 @@ const registerUser = asyncHandler( async(req,res)=>{
         email,
         password,
         role,
-        avatar:{
-            public_id:"this is a sample id",
-            url:"profilepicurl",
-        },
+        club
     });
 
     sendToken(user,201,res);

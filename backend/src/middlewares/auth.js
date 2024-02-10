@@ -33,7 +33,7 @@ const authorizeRoles = (...roles) => {
     };
 };
 
-const isAuthorizedUser = asyncHandler( async(req, res) => {
+const isAuthorizedUser = asyncHandler( async(req, res, next) => {
     try {
         const { token } = req.cookies;
 
@@ -41,12 +41,13 @@ const isAuthorizedUser = asyncHandler( async(req, res) => {
             return next(new ApiError(401))
         }
         
-        const club = await Request.findById(req.params.requestId).club;
+        const request = await Request.findById(req.params.requestId);
+        const club = request.club;
         const decodedData = jwt.verify(token,process.env.JWT_SECRET);
         req.user = await User.findById(decodedData.id);
 
         if (club === req.user.club) {
-            next()
+            next();
         } else {
             res.json( new ApiError(500, "Not authorized to approve or recommend"))
         }
