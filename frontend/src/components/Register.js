@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {Box,Text, Center, VStack } from "@chakra-ui/react";
 import Alert from '@mui/material/Alert'
 import { useRegisterUserMutation } from "../services/userAuthApi";
+import axios from "axios";
 
 const Register = () => {
   const [server_error, setServerError] = useState({})
@@ -50,7 +51,13 @@ const Register = () => {
       console.log(server_error.non_field_errors);
     }
     else{
-    const res = await registerUser(actualData)
+    // const res = await registerUser(actualData)
+      const res = await axios({
+        method: 'post',
+        url: 'http://localhost:3001/api/v1/user/register',
+        data: actualData,
+      })
+      localStorage.setItem('token', res.data.token)
     // console.log(server_error)
     if (res.error) {
       // console.log(typeof (res.error.data.errors))
@@ -61,7 +68,6 @@ const Register = () => {
     // console.log(server_error)
     if (res.data) {
       // console.log(typeof (res.data))
-      // console.log(res.data)
       navigate('/sign-in')
     }
   }

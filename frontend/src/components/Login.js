@@ -7,6 +7,7 @@ import {Box,Text, Center, HStack, VStack, Image } from "@chakra-ui/react";
 import { getToken, storeToken } from "../services/localStorageServices";
 import { useDispatch } from "react-redux";
 import { setUserToken } from "../features/authslice";
+import axios from "axios";
 // import st
 
 const Login = () => {
@@ -15,41 +16,43 @@ const Login = () => {
   const [server_error, setServerError] = useState({})
   const navigate=useNavigate();
   const [loginUser,{isLoading}]=useLoginUserMutation()
-  const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
   const [password, setPassword] = useState("");
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
   };
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
   const handleLogin = async(e) => {
     e.preventDefault();
-    console.log(email, password);
     const actualData={
-      email:email,
-      password:password,
+      username: username,
+      password: password,
     }
-    if(email==="" || password==="")
+    if(username==="" || password==="")
     {
       setServerError({'non_field_errors':['Fields may not be blank']})
       console.log(12)
       console.log(server_error.non_field_errors);
     }
     else{
-    const res = await loginUser(actualData)
+      const res = await axios({
+        method: 'post',
+        url: 'http://localhost:3001/api/v1/user/login',
+        data: actualData,
+      })
     // console.log(server_error)
     if (res.error) {
       // console.log(typeof (res.error.data.errors))
       console.log(res.error.data.errors)
       // console.log(res.error.data.errors)
-      setServerError({'non_field_errors':['Email or Password is not Valid']})
+      setServerError({'non_field_errors':['Username or Password is not Valid']})
     }
     // console.log(server_error)
     if (res.data) {
       // console.log(typeof (res.data))
-      console.log(res.data)
       storeToken(res.data.token)
       let { access_token } = getToken()
       dispatch(setUserToken({ access_token: access_token }))
@@ -104,7 +107,7 @@ const Login = () => {
                   type="name"
                   className="form-control"
                   placeholder="Enter username"
-                  onChange={handleEmailChange}
+                  onChange={handleUsernameChange}
                   />
                   </VStack>
               </div>
