@@ -21,13 +21,13 @@ This platform is designed to streamline the approval process for events and purc
 Clone the project
 
 ```bash
-  git clone https://github.com/Rudra-IITM/chocholate_problem
+  git clone https://github.com/Rudra-IITM/club_catalyst
 ```
 
 Go to the project directory
 
 ```bash
-  cd chocholate_problem
+  cd club_catalyst
 ```
 ### Set up backend
 Go to the backend directory
