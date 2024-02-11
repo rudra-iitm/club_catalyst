@@ -49,7 +49,7 @@ const Navbar = () => {
             <a href='https://www.iitmandi.ac.in/'><Image src={logo4} h={59} w={65} ml={240} mr={360}/></a>
             <Button component={NavLink} to='/' style={({ isActive }) => { return { backgroundColor: isActive ? '#6D31ED' : '#D9C8FF' ,color: isActive?  'white' : 'black' } }} sx={{textTransform: 'none', margin:1 }}>Home</Button>
 
-            <Button component={NavLink} to='/clubs' style={({ isActive }) => { return { backgroundColor: isActive ? '#6D31ED' : '#D9C8FF' ,color: isActive?  'white' : 'black' } }} sx={{ color: 'black', textTransform: 'none' }}>Todo</Button>
+            <Button component={NavLink} to='/clubs' style={({ isActive }) => { return { backgroundColor: isActive ? '#6D31ED' : '#D9C8FF' ,color: isActive?  'white' : 'black' } }} sx={{ color: 'black', textTransform: 'none' }}>Club</Button>
             {
               access_token
               ?  
@@ -74,7 +74,7 @@ const Navbar = () => {
               <Typography variant='h5' component="div" sx={{ flexGrow: 1 ,p:2,fontWeight:"bold"}}>Gymkhana IIT Mandi</Typography>
               <Button component={NavLink} to='/' style={({ isActive }) => { return { backgroundColor: isActive ? '#6D31ED' : '#D9C8FF' ,color: isActive?  'white' : 'black' } }} sx={{textTransform: 'none', margin:1 }}>Home</Button>
   
-              <Button component={NavLink} to='/clubs' style={({ isActive }) => { return { backgroundColor: isActive ? '#6D31ED' : '#D9C8FF' ,color: isActive?  'white' : 'black' } }} sx={{ color: 'black', textTransform: 'none' }}>Todo</Button>
+              <Button component={NavLink} to='/clubs' style={({ isActive }) => { return { backgroundColor: isActive ? '#6D31ED' : '#D9C8FF' ,color: isActive?  'white' : 'black' } }} sx={{ color: 'black', textTransform: 'none' }}>Club</Button>
               {
                 access_token
                 ?  

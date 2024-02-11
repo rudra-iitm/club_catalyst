@@ -1,175 +1,109 @@
-import React, { Component } from "react";
-import Modal from "./Modal";
-import axios from 'axios';  
+import * as React from 'react'
+import { Center, HStack, Image, Text, VStack } from '@chakra-ui/react'
+import { Box } from '@mui/material'
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Cards from '../features/Cards.js';
 
-class Clubs extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      viewCompleted: false,
-      activeItem: {
-        title: "",
-        description: "",
-        completed: false
-      },
-      taskList: []
+import logo1 from '../images/img1.png'
+// import logo2 from '../images/img2.jpg'
+import logo3 from '../images/img3_.png'
+import logo4 from '../images/img4.jpg'
+import { useEffect, useState } from 'react'
+
+const Club=()=>{
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
     };
-  }
 
-  // Add componentDidMount()
-  componentDidMount() {
-    this.refreshList();
-  }
+    // Attach event listener
+    window.addEventListener('resize', handleResize);
 
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); // Empty dependency array ensures that this effect runs only once, similar to componentDidMount
+  const bull = (
+    <Box
+      component="span"
+      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+    >
+      •
+    </Box>
+  );
+  
+  const card = (
+    <React.Fragment>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Word of the Day
+        </Typography>
+        <Typography variant="h5" component="div">
+          be{bull}nev{bull}o{bull}lent
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          adjective
+        </Typography>
+        <Typography variant="body2">
+          well meaning and kindly.
+          <br />
+          {'"a benevolent smile"'}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </React.Fragment>
+  );
+  
  
-  refreshList = () => {
-    axios   //Axios to send and receive HTTP requests
-      .get("http://localhost:8000/api/user/tasks/")
-      .then(res => this.setState({ taskList: res.data }))
-      .catch(err => console.log(err));
-  };
-
-
-  displayCompleted = status => {
-    if (status) {
-      return this.setState({ viewCompleted: true });
-    }
-    return this.setState({ viewCompleted: false });
-  };
-
-
-  renderTabList = () => {
-    return (
-      <div className="my-5 tab-list">
-        <span
-          onClick={() => this.displayCompleted(true)}
-          className={this.state.viewCompleted ? "active" : ""}
-        >
-          completed
-            </span>
-        <span
-          onClick={() => this.displayCompleted(false)}
-          className={this.state.viewCompleted ? "" : "active"}
-        >
-          Incompleted
-            </span>
-      </div>
-    );
-  };
-
-  // Main variable to render items on the screen
-  renderItems = () => {
-    const { viewCompleted } = this.state;
-    const newItems = this.state.taskList.filter(
-      item => item.completed === viewCompleted
-    );
-    return newItems.map(item => (
-      <li
-        key={item.id}
-        className="list-group-item d-flex justify-content-between align-items-center"
-      >
-        <span
-          className={`todo-title mr-2 ${this.state.viewCompleted ? "completed-todo" : ""
-            }`}
-          title={item.description}
-        >
-          {item.title}
-        </span>
-        <span>
-          <button
-            onClick={() => this.editItem(item)}
-            className="btn btn-secondary mr-2"
-          >
-            Edit
-          </button>
-          <button
-            onClick={() => this.handleDelete(item)}
-            className="btn btn-danger"
-          >
-            Delete
-          </button>
-        </span>
-      </li>
-    ));
-  };
-  // ///////////////////////////////////////////////////////////
-
-  ////add this after modal creation
-  toggle = () => {//add this after modal creation
-    this.setState({ modal: !this.state.modal });//add this after modal creation
-  };
-  // handleSubmit = item => {//add this after modal creation
-  //   this.toggle();//add this after modal creation
-  //   alert("save" + JSON.stringify(item));//add this after modal creation
-  // };
-
-  // Submit an item
-  handleSubmit = item => {
-    this.toggle();
-    if (item.id) {
-      // if old post to edit and submit
-      axios
-        .put(`http://localhost:8000/api/user/tasks/${item.id}/`, item)
-        .then(res => this.refreshList());
-      return;
-    }
-    // if new post to submit
-    axios
-      .post("http://localhost:8000/api/user/tasks/", item)
-      .then(res => this.refreshList());
-  };
-
-  // Delete item
-  handleDelete = item => {
-    axios
-      .delete(`http://localhost:8000/api/user/tasks/${item.id}/`)
-      .then(res => this.refreshList());
-  };
-  // handleDelete = item => {//add this after modal creation
-  //   alert("delete" + JSON.stringify(item));//add this after modal creation
-  // };
-
-  // Create item
-  createItem = () => {
-    const item = { title: "", description: "", completed: false };
-    this.setState({ activeItem: item, modal: !this.state.modal });
-  };
-
-  //Edit item
-  editItem = item => {
-    this.setState({ activeItem: item, modal: !this.state.modal });
-  };
-
-
-  // -I- Start by visual effects to viewer
-  render() {
-    return (
-      <main className="content">
-        <h1 className="text-black text-uppercase text-center my-4">Task Manager</h1>
-        <div className="row ">
-          <div className="col-md-6 col-sm-10 mx-auto p-0">
-            <div className="card p-3">
-              <div className="">
-                <button onClick={this.createItem} className="btn btn-primary">
-                  Add task
-                    </button>
-              </div>
-              {this.renderTabList()}
-              <ul className="list-group list-group-flush">
-                {this.renderItems()}
-              </ul>
-            </div>
-          </div>
-        </div>
-        {this.state.modal ? (
-          <Modal
-            activeItem={this.state.activeItem}
-            toggle={this.toggle}
-            onSave={this.handleSubmit}
-          />
-        ) : null}
-      </main>
-    );
-  }
+  return(<>
+    <Box sx={{ flexGrow: 1 }}  bgcolor={"#6D31ED"} height={900}>
+        <HStack>
+        <Box width={windowSize.width} p={3}>
+          <Center>
+          <VStack>
+          <Box borderRadius={10} >
+          <Cards HeadText="ABCD" Descrip="asdfghjkjhfghjkjhgfdfghjkgf" Imgsrc={logo3}></Cards>
+          </Box>
+          <Card variant="outlined">{card}</Card>
+          {/* <Card variant="outlined">{card}</Card> */}
+          </VStack>
+          </Center>
+        </Box>
+        <Box width={windowSize.width}>
+          <Center>
+            <VStack>
+            <Card variant="outlined">{card}</Card>
+            <Card variant="outlined">{card}</Card>
+            </VStack>
+          </Center>
+        </Box>
+        <Box width={windowSize.width} p={3}>
+          <Center>
+          <VStack>
+          <Card variant="outlined">{card}</Card>
+          <Card variant="outlined">{card}</Card>
+          </VStack>
+          </Center>
+        </Box>
+        </HStack>
+      </Box>
+      
+      
+  </>)
 }
-export default Clubs;
+export default Club
