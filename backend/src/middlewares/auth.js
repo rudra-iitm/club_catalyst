@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 import { Request } from '../models/requestModel.js';
 
 const isAuthenticatedUser = asyncHandler( async(req, res, next) => {
-    const { token } = req.cookies;
+    const token = req.headers['token'];
 
     if(!token){
         return next(new ApiError(401))

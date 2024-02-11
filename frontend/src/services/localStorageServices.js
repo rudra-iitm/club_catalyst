@@ -8,7 +8,7 @@ const storeToken = (value) => {
 
 const getToken = () => {
   let access_token = localStorage.getItem('access_token')
-  return { access_token}
+  return { access_token }
 }
 
 const removeToken = () => {
