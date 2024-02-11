@@ -17,6 +17,10 @@ const requestSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    totalApprovedAmount: {
+        type: Number,
+        required: true
+    },
     approvalChain: {
         type: [String],
         required: true
@@ -38,6 +42,10 @@ const requestSchema = new mongoose.Schema({
         type: String,
         enum: ['Pending', 'Approved by Society FA', 'Approved by chairSAP', 'Approved by Club FA', 'Rejected', 'Approved'],
         default: 'Pending'
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
     }
 });
 
