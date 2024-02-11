@@ -164,6 +164,35 @@ const approvedByChairSAP = asyncHandler( async (req, res) => {
         }
 
         request.societyFAApproval = approval;
+        if(request.amount<=50000){
+            request.approved_status = 'Approved';
+        }
+        else{
+            request.approved_status = 'Approved By Chair SAP';
+        }
+        
+        await request.save();
+
+        res.status(200).json({ message: 'Approval added successfully', request });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+})
+
+const approvedByDeanStudents = asyncHandler( async (req, res) => {
+    try {
+        const requestId = req.params.requestId;
+        const approval = req.body.approval;
+
+        // Find the request by ID
+        const request = await Request.findById(requestId);
+        
+        if (!request) {
+            return res.status(404).json({ message: 'Request not found' });
+        }
+
+        request.societyFAApproval = approval;
         request.approved_status = 'Approved';
         await request.save();
 
@@ -195,4 +224,4 @@ const getApprovedRequest = asyncHandler( async(req, res) => {
 
 
 export { generateRequest, recommendClubSec, approvedByFA, recommendSocietyFA, approvedByChairSAP, approvedBySocietyFA,
-getAllRequest, getApprovedRequest, getRequestsByClub };
+getAllRequest, getApprovedRequest, getRequestsByClub,approvedByDeanStudents };
