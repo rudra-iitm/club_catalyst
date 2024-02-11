@@ -1,4 +1,18 @@
 
+# Club-Catalyst
+
+## Overview
+This platform is designed to streamline the approval process for events and purchases within the student gymkhana office. It facilitates a structured workflow for approval automation, request generation, and data management.
+
+## Approval Automation
+- Requests go through a predefined procedure involving club generation, secretary recommendation, club financial advisor (FA) approval, society FA recommendation, and chairSAP approval.
+- Purchase requests have additional rules based on the amount, with different approval chains and monthly limits.
+
+## Request Generation
+- Clubs can submit requests with explanations and attachments.
+- Requests include monetary aspects, which determine the approval chain.
+- The portal supports text and attachments similar to an email.
+
 ## Run Locally
 
 Clone the project
