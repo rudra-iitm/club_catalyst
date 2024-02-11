@@ -31,9 +31,10 @@ const GenReq=()=>{
     e.preventDefault();
     console.log(club,description,amount);
     const actualData={
-      club:club,
-      description:description,
-      amount:amount
+      club: club,
+      description: description,
+      amount: amount,
+      attachment: file,
     }
     if(club===""||description===""||amount===0)
     {
@@ -45,10 +46,9 @@ const GenReq=()=>{
     // const res = await registerUser(actualData)
       const res = await axios({
         method: 'post',
-        url: 'http://localhost:3001/api/v1/user/register',
+        url: 'http://localhost:3001/api/v1/requests/submit',
         data: actualData,
       })
-      localStorage.setItem('token', res.data.token)
     // console.log(server_error)
     if (res.error) {
       // console.log(typeof (res.error.data.errors))
@@ -59,7 +59,7 @@ const GenReq=()=>{
     // console.log(server_error)
     if (res.data) {
       // console.log(typeof (res.data))
-      navigate('/sign-in')
+      navigate('/dashboard')
     }
   }
   };
