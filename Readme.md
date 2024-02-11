@@ -47,7 +47,7 @@ Run backend
   npm run dev
 ```
 
-This is start backend at PORT 3001 @ http://localhost:3001/
+This will start backend at PORT 3001 @ http://localhost:3001/
 
 ### Set up frontend
 Go to the frontend directory
@@ -65,5 +65,5 @@ Run frontend
   npm start
 ```
 
-This is start frontend at PORT 3000 @ http://localhost:3000/
+This will start frontend at PORT 3000 @ http://localhost:3000/
 
