@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import AppBar from '@mui/material/AppBar';
 import { NavLink } from 'react-router-dom';
 import { getToken } from '../services/localStorageServices';
-import {Image } from '@chakra-ui/react';
+import {Center, Image } from '@chakra-ui/react';
 // import logo1 from '../images/img1.jpg'
 import logo2 from '../images/img2.jpg'
 // import logo3 from '../images/img3.jpg'
@@ -44,9 +44,9 @@ const Navbar = () => {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" color="inherit">
           <Toolbar>
-          <Image src={logo2} h={40} w={45}/>
+            <Image src={logo2} h={40} w={45}/>
             <Typography variant='h5' component="div" sx={{ flexGrow: 1 ,p:2,fontWeight:"bold"}}>Gymkhana IIT Mandi</Typography>
-            <a href='https://www.iitmandi.ac.in/'><Image src={logo4} h={59} w={65} ml={240} mr={360}/></a>
+            
             <Button component={NavLink} to='/' style={({ isActive }) => { return { backgroundColor: isActive ? '#6D31ED' : '#D9C8FF' ,color: isActive?  'white' : 'black' } }} sx={{textTransform: 'none', margin:1 }}>Home</Button>
 
             <Button component={NavLink} to='/clubs' style={({ isActive }) => { return { backgroundColor: isActive ? '#6D31ED' : '#D9C8FF' ,color: isActive?  'white' : 'black' } }} sx={{ color: 'black', textTransform: 'none' }}>Club</Button>
@@ -63,7 +63,7 @@ const Navbar = () => {
     </Box>
     </>
   )}
-  else
+  else if(windowSize.width>600)
   {
     return (
       <>
@@ -87,6 +87,31 @@ const Navbar = () => {
           </AppBar>
       </Box>
       </>
+    )
+  }
+  else
+  {
+    return(
+      <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="fixed" color="inherit">
+            <Center display={"flex"} flexDirection={"row"}>
+            <Toolbar>
+
+              <Button component={NavLink} to='/' style={({ isActive }) => { return { backgroundColor: isActive ? '#6D31ED' : '#D9C8FF' ,color: isActive?  'white' : 'black' } }} sx={{textTransform: 'none', margin:1 }}>Home</Button>
+  
+              <Button component={NavLink} to='/clubs' style={({ isActive }) => { return { backgroundColor: isActive ? '#6D31ED' : '#D9C8FF' ,color: isActive?  'white' : 'black' } }} sx={{ color: 'black', textTransform: 'none' }}>Club</Button>
+              {
+                access_token
+                ?  
+                <Button component={NavLink} to='/dashboard' type="submit"  style={({ isActive }) => { return { backgroundColor: isActive ? '#6D31ED' : '#D9C8FF' ,color: isActive?  'white' : 'black'  } }} sx={{ color: 'black', textTransform: 'none',margin:1 }}>Account</Button>
+                :
+                <Button component={NavLink} to='/sign-in' type="submit" style={({ isActive }) => { return { backgroundColor: isActive ? '#6D31ED' : '#D9C8FF' ,color: isActive?  'white' : 'black'  } }} sx={{ color: 'black', textTransform: 'none',margin:1 }}>Account</Button>
+              }
+  
+            </Toolbar>
+            </Center>
+          </AppBar>
+      </Box>
     )
   }
 }
