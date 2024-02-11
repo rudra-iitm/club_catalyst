@@ -38,6 +38,7 @@ const Dashboard = () => {
   }, [access_token]);
 
   console.log(data);
+  console.log(data.email, data.username);
 
   const appClickHand1 = (e) => {
     setBool1(true);
