@@ -29,7 +29,7 @@ const Dashboard = () => {
       url: 'https://club-catalyst.onrender.com/api/v1/user/details',
     })
       .then((response) => {
-        setData(response.data.data);
+        setData(response.data);
       })
       .catch((error) => {
         console.error('An error occurred:', error.message);
