@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 // import LoginReg from "./components/LoginReg";
-import Todo from "./components/Todo";
+import Clubs from "./components/Clubs";
 import Layout from "./components/Layout";
 import Home from "./components/Home";
 import Register from "./components/Register";
@@ -9,18 +9,19 @@ import ResetPassword from "./components/ResetPassword";
 import Dashboard from "./components/Dashboard";
 import { useSelector } from "react-redux";
 import Login from "./components/Login";
+
 // import { getToken } from "./services/localStorageServices";
 
 function App() {
-  // console.log(123)
   const { access_token } = useSelector(state => state.auth)
+
   return (
     <>
-    <BrowserRouter>
+   <BrowserRouter>
      <Routes>
-      <Route path="/" element={<Layout/>}>
+      <Route path="/" element={<Layout />}>
         <Route index element={<Home/>} />
-          <Route path="todo" element={<Todo/>} />
+          <Route path="clubs" element={<Clubs/>} />
           <Route path="sign-up" element={<Register/>} />
           <Route path="sign-in" element={!access_token ? <Login /> : <Navigate to="/dashboard" />} />
           <Route path="sent-reset-link" element={<ForgetPass/>} />
@@ -29,8 +30,8 @@ function App() {
         <Route path="*" element={<h1>Error 404 Page not found !!</h1>} />
         <Route path="api/user/reset/:id/:token" element={<ResetPassword/>} />
      </Routes>
-    </BrowserRouter>
-    </>
+    </BrowserRouter> 
+ </>
   );
 }
 

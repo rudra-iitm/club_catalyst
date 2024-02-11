@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Modal from "./Modal";
 import axios from 'axios';  
 
-class Todo extends Component {
+class Clubs extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -172,4 +172,4 @@ class Todo extends Component {
     );
   }
 }
-export default Todo;
+export default Clubs;

@@ -8,12 +8,17 @@ const Register = () => {
   const [server_error, setServerError] = useState({})
   const navigate=useNavigate();
   const [registerUser,{isLoading}]=useRegisterUserMutation()
+  const [name, setName] = useState("")
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
-  const [conpassword, setConpassword] = useState("");
+  const [club, setClub] = useState("");
+  const [role, setRole] = useState("");
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
+  };
+  const handleNameChange = (e) => {
+    setName(e.target.value);
   };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -21,29 +26,27 @@ const Register = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-  const handleConPasswordChange = (e) => {
-    setConpassword(e.target.value);
+  const handleRoleChange = (e) => {
+    setRole(e.target.value);
   };
+  const handleClubChange = (e) => {
+    setClub(e.target.value);
+  };  
   const handleRegister = async(e) => {
     e.preventDefault();
-    console.log(username,email, password,conpassword);
+    console.log(name,username,email, password,club,role);
     const actualData={
-      name:username,
+      name:name,
+      username:username,
       email:email,
       password:password,
-      conpassword:conpassword,
-      tc:"True"
+      club:club,
+      role:role
     }
-    if(username==="" || email==="" || password==="" || conpassword==="")
+    if(username==="" || email==="" || password==="" ||role===""||club===""||name==="")
     {
       setServerError({'non_field_errors':['Fields may not be blank']})
       console.log(12)
-      console.log(server_error.non_field_errors);
-    }
-    else if(password!==conpassword)
-    {
-      setServerError({'non_field_errors':['Password and Confirm Password should match']})
-      console.log(13)
       console.log(server_error.non_field_errors);
     }
     else{
@@ -65,9 +68,20 @@ const Register = () => {
   };
   return (
     <Center>
-    <Box height={540} width={470} marginTop={10} bgColor='#ACCDF3' border="GrayText" borderRadius={10} p={36}>
+    <Box height={730} width={470} marginTop={10} bgColor='#ACCDF3' border="GrayText" borderRadius={10} p={36}>
     <form id="register">
     <Center><h3><b>Sign Up</b></h3></Center>
+        <div className="mb-3">
+          <VStack spacing={10} align="flex-start">
+          <label><Text mb={1} as="b">Name</Text></label>
+          <input
+            type="name"
+            className="form-control"
+            placeholder="Enter Name"
+            onChange={handleNameChange}
+            />
+            </VStack>
+        </div>
         <div className="mb-3">
           <VStack spacing={10} align="flex-start">
           <label><Text mb={1} as="b">Username</Text></label>
@@ -103,14 +117,24 @@ const Register = () => {
           </VStack>
         </div>
         <div className="mb-3">
-        <VStack spacing={10} align="flex-start">
-          <label><Text mb={1} as="b">Confirm Password</Text></label>
-          
+          <VStack spacing={10} align="flex-start">
+          <label><Text mb={1} as="b">Club name</Text></label>
           <input
-            type="password"
+            type="name"
             className="form-control"
-            placeholder="Enter Confirm password"
-            onChange={handleConPasswordChange}
+            placeholder="Enter Club name"
+            onChange={handleClubChange}
+            />
+            </VStack>
+        </div>
+        <div className="mb-3">
+        <VStack spacing={10} align="flex-start">
+          <label><Text mb={1} as="b">Role</Text></label>
+          <input
+            type="name"
+            className="form-control"
+            placeholder="Enter role"
+            onChange={handleRoleChange}
           />
           </VStack>
         </div>
