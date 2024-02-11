@@ -8,7 +8,14 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Cards from '../features/Cards.js';
 
-import logo1 from '../images/img1.png'
+import sae from '../images/saelogo.png'
+import stac from '../images/stac_logo-removebg-preview.png'
+import yantrik from '../images/yantrik Logo.png'
+import saic from '../images/saic logo.png'
+import mtb from '../images/mtb_logo-removebg-preview.png'
+import robo from '../images/robo_logo-removebg-preview.png'
+import sntc from '../images/sntccc.png'
+import kp from '../images/kp_logo-removebg-preview.png'
 // import logo2 from '../images/img2.jpg'
 import logo3 from '../images/img3_.png'
 import logo4 from '../images/img4.jpg'
@@ -36,71 +43,59 @@ const Club=()=>{
       window.removeEventListener('resize', handleResize);
     };
   }, []); // Empty dependency array ensures that this effect runs only once, similar to componentDidMount
-  const bull = (
-    <Box
-      component="span"
-      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    >
-      •
-    </Box>
-  );
-  
-  const card = (
-    <React.Fragment>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </React.Fragment>
-  );
-  
  
   return(<>
-    <Box sx={{ flexGrow: 1 }}  bgcolor={"#6D31ED"} height={900}>
-        <HStack>
-        <Box width={windowSize.width} p={3}>
+    <Box sx={{ flexGrow: 1 }}  bgcolor={"#6D31ED"} height={1700}>
+        <VStack>
+        <Box width={windowSize.width*0.98} >
           <Center>
-          <VStack>
-          <Box borderRadius={10} >
-          <Cards HeadText="ABCD" Descrip="asdfghjkjhfghjkjhgfdfghjkgf" Imgsrc={logo3}></Cards>
+          <HStack justifyContent={"space-between"}>
+          <Box borderRadius={10}>
+          <Cards HeadText="Kamand Prompt" Descrip="The KamandPrompt club organise Programming Contests, Hackathons and Coding Classes to prepare students for events like ACM ICPC and GSoC and bring out the best in them." Imgsrc={kp}></Cards>
           </Box>
-          <Card variant="outlined">{card}</Card>
-          {/* <Card variant="outlined">{card}</Card> */}
-          </VStack>
+          <Box borderRadius={10}>
+          <Cards HeadText="Yantrik Club" Descrip="Yantrik conducts various interesting events, make amazing projects, teaches a lot to get the learnings into action." Imgsrc={yantrik}></Cards>
+          </Box>
+          </HStack>
           </Center>
         </Box>
-        <Box width={windowSize.width}>
+        <Box width={windowSize.width*0.98} >
           <Center>
-            <VStack>
-            <Card variant="outlined">{card}</Card>
-            <Card variant="outlined">{card}</Card>
-            </VStack>
+          <HStack justifyContent={"space-between"}>
+          <Box borderRadius={10}>
+          <Cards HeadText="Science and Technology Council" Descrip="The technical society of IIT Mandi or Science and Technology Council (SNTC) IIT Mandi consists of technical clubs for programming, Bioengineering, robotics,etc." Imgsrc={sntc}></Cards>
+          </Box>
+          <Box borderRadius={10}>
+          <Cards HeadText="MTB Club" Descrip="The Mountain Biking Club(MtB) of IIT Mandi, since it's inception in the year 2017, back when we had started from 4 cycles and 5 members, has seen a constant growth." Imgsrc={mtb}></Cards>
+          </Box>
+          </HStack>
           </Center>
         </Box>
-        <Box width={windowSize.width} p={3}>
+        <Box width={windowSize.width*0.98} >
           <Center>
-          <VStack>
-          <Card variant="outlined">{card}</Card>
-          <Card variant="outlined">{card}</Card>
-          </VStack>
+          <HStack justifyContent={"space-between"}>
+          <Box borderRadius={10}>
+          <Cards HeadText="Society of Automative Engineers" Descrip="SAE IIT Mandi is a enthusiastic, motivated and passionate team of engineers whose interest resides in gears, suspensions, engines, brakes etc., talking in a nutshell an automobile." Imgsrc={sae}></Cards>
+          </Box>
+          <Box borderRadius={10}>
+          <Cards HeadText="Space Technology and Astronomy Cell" Descrip="STAC is a club where one can explore every corner of the technical knowledge he/she has ! The club enables students to not only enhance their knowledge about the different aspects related to astronomy and astrophysics but also use the technologies available to develop their skills that will help them in future." Imgsrc={stac}></Cards>
+          </Box>
+          </HStack>
           </Center>
         </Box>
-        </HStack>
+        <Box width={windowSize.width*0.98} >
+          <Center>
+          <HStack justifyContent={"space-between"}>
+          <Box borderRadius={10}>
+          <Cards HeadText="System Administration and Infosec Cel" Descrip="S.A.I.C. was created under the Programming Club, IIT Mandi to fullfil the need of a dedicated club for cybersecurity and other information security related events and activities" Imgsrc={saic}></Cards>
+          </Box>
+          <Box borderRadius={10}>
+          <Cards HeadText="Robotronics Club" Descrip="Robotics + Electronics = Robotronics. This club works in the field of both robotics and electronics. In electronics domain, it works on analog and digital electronics helping in developing practical skills in building and designing circuits." Imgsrc={robo}></Cards>
+          </Box>
+          </HStack>
+          </Center>
+        </Box>
+        </VStack>
       </Box>
       
       

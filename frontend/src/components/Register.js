@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import {Box,Text, Center, VStack } from "@chakra-ui/react";
+import {Box,Text, Center, VStack, SelectField } from "@chakra-ui/react";
 import Alert from '@mui/material/Alert'
 import { useRegisterUserMutation } from "../services/userAuthApi";
 import axios from "axios";
@@ -73,8 +73,8 @@ const Register = () => {
   }
   };
   return (
-    <Center>
-    <Box height={730} width={470} marginTop={10} bgColor='#ACCDF3' border="GrayText" borderRadius={10} p={36}>
+    <Center display={"flex"} flexDirection={"row"}  left={'37%'}>
+    <Box height={730} width={470} marginTop={10} bgColor='#ACCDF3' border="GrayText" borderRadius={10} p={36} display={"flex"} flexDirection={"column"} m={10}>
     <form id="register">
     <Center><h3><b>Sign Up</b></h3></Center>
         <div className="mb-3">
@@ -124,24 +124,36 @@ const Register = () => {
         </div>
         <div className="mb-3">
           <VStack spacing={10} align="flex-start">
-          <label><Text mb={1} as="b">Club name</Text></label>
-          <input
-            type="name"
-            className="form-control"
-            placeholder="Enter Club name"
-            onChange={handleClubChange}
-            />
-            </VStack>
+            <label><Text mb={1} as="b">Club/Society name</Text></label>
+            <SelectField w={400} h={40} borderRadius={10} onChange={handleClubChange}>
+              <option value="gdsc">GDSC</option>
+              <option value="sntc">SNTC</option>
+              <option value="saic">SAIC</option>
+              <option value="stac">STAC</option>
+              <option value="mtbc">MTB Club</option>
+              <option value="robotic">Robotics Club</option>
+              <option value="kamandpromptc">Programming Club</option>
+              <option value="yantrikc">Yantrik Club</option>
+              <option value="saec">SAE Club</option>
+              <option value="culturals">Cultural Society</option>
+              <option value="literarys">Literary Society</option>
+              <option value="sports">Sports Society</option>
+              <option value="researchs">Research Society</option>
+              
+            </SelectField>
+          </VStack>
         </div>
         <div className="mb-3">
         <VStack spacing={10} align="flex-start">
           <label><Text mb={1} as="b">Role</Text></label>
-          <input
-            type="name"
-            className="form-control"
-            placeholder="Enter role"
-            onChange={handleRoleChange}
-          />
+          <SelectField w={400} h={40} borderRadius={10} onChange={handleRoleChange}>
+              <option value="secretary">Secretary</option>
+              <option value="clubfa">Club FA</option>
+              <option value="societyfa">Society FA</option>
+              <option value="chairsap">Chair SAP</option>
+              <option value="studentoffice">Students Office</option>
+              <option value="deanstudent">Dean Students</option>
+            </SelectField>
           </VStack>
         </div>
          <div className="d-grid">

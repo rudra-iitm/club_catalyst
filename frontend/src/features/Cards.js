@@ -6,21 +6,21 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
+import { Box } from '@mui/material';
+import { Center, Image } from '@chakra-ui/react';
 export default function Cards({HeadText,Descrip,Imgsrc}) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        alt={HeadText}
-        height="140"
-        image={Imgsrc}
-      />
+    <Card sx={{ maxWidth: 460, p:1 , m: 5}}>
+      <Center>
+        <Box><Image src={Imgsrc} h={100} w={100}/></Box>
+      </Center>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div">
           {HeadText}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {Descrip}
+          
         </Typography>
       </CardContent>
       <CardActions>
