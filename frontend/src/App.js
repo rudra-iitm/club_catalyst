@@ -26,11 +26,10 @@ function App() {
           <Route path="sign-up" element={<Register/>} />
           <Route path="sign-in" element={!access_token ? <Login /> : <Navigate to="/dashboard" />} />
           <Route path="sent-reset-link" element={<ForgetPass/>} />
-          <Route path="/request" element={<GenReq/>} />
+          <Route path="request" element={access_token ? <GenReq /> : <Navigate to="/request" />} />
         </Route>
-        <Route path="/dashboard" element={<Dashboard/>} />
-          {/* <Route path="/dashboard" element={access_token ? <Dashboard /> : <Navigate to="/sign-in" />} /> */}
-          {/* <Route path="/request" element={access_token ? <GenReq /> : <Navigate to="/request" />} /> */}
+        {/* <Route path="/dashboard" element={<Dashboard/>} /> */}
+          <Route path="/dashboard" element={access_token ? <Dashboard /> : <Navigate to="/sign-in" />} />
         <Route path="*" element={<h1>Error 404 Page not found !!</h1>} />
         <Route path="api/user/reset/:id/:token" element={<ResetPassword/>} />
      </Routes>
