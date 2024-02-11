@@ -148,4 +148,25 @@ const approvedByChairSAP = asyncHandler( async (req, res) => {
     }
 })
 
-export { generateRequest, recommendClubSec, approvedByFA, recommendSocietyFA, approvedByChairSAP, approvedBySocietyFA };
+const getAllRequest = asyncHandler( async(req, res) => {
+    const requests = await Request.find()
+    return res.json(new ApiResponse(200, requests));
+})
+
+const getRequestsByClub = asyncHandler( async(req, res) => {
+    const requests = await Request.find({
+        club: req.query.club
+    })
+    return res.json(new ApiResponse(200, requests));
+})
+
+const getApprovedRequest = asyncHandler( async(req, res) => {
+    const requests = await Request.find({
+        approved_status: req.query.status
+    })
+    return res.json(new ApiResponse(200, requests));
+})
+
+
+export { generateRequest, recommendClubSec, approvedByFA, recommendSocietyFA, approvedByChairSAP, approvedBySocietyFA,
+getAllRequest, getApprovedRequest, getRequestsByClub };
