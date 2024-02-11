@@ -2,7 +2,7 @@ import { Center, HStack, Image, Text, VStack } from '@chakra-ui/react'
 import { Box } from '@mui/material'
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
-// import logo1 from '../images/img1_.png'
+import logo1 from '../images/img1.png'
 // import logo2 from '../images/img2.jpg'
 import logo3 from '../images/img3_.png'
 import logo4 from '../images/img4.jpg'
@@ -43,7 +43,7 @@ const Home = () => {
             <Text as={"h1"} color={'white'} paddingLeft={100} paddingRight={100} paddingTop={100} align={'center'} fontWeight={'bold'}>
               Welcome to Student Gymkhana
             </Text>
-            <Text as={"h7"} color={'white'} padding={10} align={'center'} fontWeight={'bold'}>
+            <Text as={"h5"} color={'white'} padding={10} align={'center'} fontWeight={'bold'}>
             Payment processing platform that facilitates transactions between faculty advisors and dean with club coordinators and secretaries.
             </Text>          
           </VStack>
@@ -51,7 +51,7 @@ const Home = () => {
         </Box>
         <Box width={windowSize.width}>
         <Center>
-          <Image src={logo3 } h={400} w={400} mt={30}/>
+          <Image src={logo1 } h={320} w={420} mt={60}/>
           </Center>
           </Box>
         </HStack>
