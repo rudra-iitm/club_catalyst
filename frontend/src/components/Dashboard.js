@@ -110,7 +110,8 @@ const Dashboard = () => {
                       <Text color={'white'} as={'h6'}>{data.role}</Text>
                     </VStack>
                     <HStack width={windowSize.width * 0.25}>
-                      <Image src={logo3} h={50} w={50} />
+                      <Button onClick={handlelogout}>Log out</Button>
+                      {/* <Image src={logo3} h={50} w={50} /> */}
                     </HStack>
                   </VStack>
                 </Box>
@@ -196,7 +197,11 @@ const Dashboard = () => {
                       <Text color={'white'} as={'h6'}>{data.username}</Text>
                     </VStack>
                     <HStack width={windowSize.width * 0.25}>
-                      <Image src={logo3} h={50} w={50} />
+                      <Box border={"ButtonFace"} boxShadow={20} bgcolor={'#ACCDF3'} width={100} alignContent={'center'} borderRadius={10}>
+                        <ListItemButton onClick={handlelogout} alignContent={'center'} >Log out</ListItemButton>
+                      </Box>
+                      {/* <Button onClick={handlelogout} bgcolor={'blue'}>Log out</Button> */}
+                      {/* <Image src={logo3} h={50} w={50} /> */}
                     </HStack>
                   </VStack>
                 </Box>
