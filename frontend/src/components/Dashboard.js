@@ -52,6 +52,9 @@ const Dashboard = () => {
   const reqClickHand = (e) => {
     navigate('/request')
   }
+  const handleGohome = (e) => {
+    navigate('/')
+  }
   const handlelogout = (e) => {
     console.log(access_token);
     removeToken();
@@ -111,10 +114,11 @@ const Dashboard = () => {
                       <Box border={"ButtonFace"} boxShadow={20} bgcolor={'#ACCDF3'} width={100} alignContent={'center'} borderRadius={10}>
                         <ListItemButton onClick={handlelogout} alignContent={'center'} >Log out</ListItemButton>
                       </Box>
-
+                      <Box border={"ButtonText"} boxShadow={20} bgcolor={'#ACCDF3'} width={110} alignContent={'center'} borderRadius={10}>
+                        <ListItemButton onClick={handleGohome} alignContent={'center'} >Go Home</ListItemButton>
+                      </Box>
                     </VStack>
                     <HStack width={windowSize.width * 0.25}>
-
                       <Image src={logo3} h={50} w={50} />
                     </HStack>
                   </VStack>
@@ -202,10 +206,11 @@ const Dashboard = () => {
                       <Box border={"ButtonFace"} boxShadow={20} bgcolor={'#ACCDF3'} width={100} alignContent={'center'} borderRadius={10}>
                         <ListItemButton onClick={handlelogout} alignContent={'center'} >Log out</ListItemButton>
                       </Box>
-
+                      <Box border={"ButtonText"} boxShadow={20} bgcolor={'#ACCDF3'} width={110} alignContent={'center'} borderRadius={10}>
+                        <ListItemButton onClick={handleGohome} alignContent={'center'} >Go Home</ListItemButton>
+                      </Box>
                     </VStack>
                     <HStack width={windowSize.width * 0.25}>
-
                       <Image src={logo3} h={50} w={50} />
                     </HStack>
                   </VStack>
