@@ -33,6 +33,8 @@ const Dashboard = () => {
       });
   }, [access_token]);
 
+  console.log(data);
+
   const handlelogout = (e) => {
     console.log(access_token);
     removeToken();
