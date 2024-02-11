@@ -14,7 +14,7 @@ import { Center, HStack, Image, Text, VStack } from '@chakra-ui/react';
 const Dashboard = () => {
 
   const { access_token } = getToken();
-  const [data, setData] = useState({club:'saic',email:"abc@gmail.com",name:'Xyz',role:"secretery",username:'a',amount:5000,totalApprovedAmount:90});
+  const [data, setData] = useState({ club: 'saic', email: "abc@gmail.com", name: 'Xyz', role: "secretery", username: 'a', amount: 5000, totalApprovedAmount: 90 });
 
   useEffect(() => {
     axios({
@@ -22,7 +22,7 @@ const Dashboard = () => {
       headers: {
         'token': access_token
       },
-      url: 'http://localhost:3001/api/v1/user/details',
+      url: 'https://club-catalyst.onrender.com/api/v1/user/details',
     })
       .then((response) => {
         setData(response.data);
@@ -71,7 +71,7 @@ const Dashboard = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []); // Empty dependency array ensures that this effect runs only once, similar to componentDidMount
- 
+
   return (
     <>
       <CssBaseline />
@@ -79,34 +79,34 @@ const Dashboard = () => {
         <Box bgcolor={'#6D31ED'} height={windowSize.height} sx={{ flexGrow: 1 }}>
           <HStack>
             <Center>
-            <Box bgcolor={'#6D31ED'} height={windowSize.height} width={windowSize.width*0.25} sx={{ flexGrow: 1 }} position={'fixed'} top={0} left={0} justifyContent={"space-between"} >
-              <VStack  height={windowSize.height} width={windowSize.width*0.25} left={0} top={0} justifyContent={"space-between"} verticalAlign={"center"}>
-                <HStack width={windowSize.width*0.25}>
-                    <Image src={logo2} h={50} w={50}/>
-                </HStack>
-                <VStack>
-                  <Text color={'white'} as={'h3'} fontWeight={"bold"}>{data.name}</Text>
-                  <Text color={'white'} as={'h6'}>{data.email}</Text>
-                  <Text color={'white'} as={'h6'}>Expenses : {data.amount}</Text>
-                  <Text color={'white'} as={'h6'}>{data.username}</Text>
-                  <Text color={'white'} as={'h6'}>{data.username}</Text>
-                  <Text color={'white'} as={'h6'}>{data.username}</Text>
+              <Box bgcolor={'#6D31ED'} height={windowSize.height} width={windowSize.width * 0.25} sx={{ flexGrow: 1 }} position={'fixed'} top={0} left={0} justifyContent={"space-between"} >
+                <VStack height={windowSize.height} width={windowSize.width * 0.25} left={0} top={0} justifyContent={"space-between"} verticalAlign={"center"}>
+                  <HStack width={windowSize.width * 0.25}>
+                    <Image src={logo2} h={50} w={50} />
+                  </HStack>
+                  <VStack>
+                    <Text color={'white'} as={'h3'} fontWeight={"bold"}>{data.name}</Text>
+                    <Text color={'white'} as={'h6'}>{data.email}</Text>
+                    <Text color={'white'} as={'h6'}>Expenses : {data.amount}</Text>
+                    <Text color={'white'} as={'h6'}>{data.username}</Text>
+                    <Text color={'white'} as={'h6'}>{data.username}</Text>
+                    <Text color={'white'} as={'h6'}>{data.username}</Text>
+                  </VStack>
+                  <HStack width={windowSize.width * 0.25}>
+                    <Image src={logo3} h={50} w={50} />
+                  </HStack>
                 </VStack>
-                <HStack width={windowSize.width*0.25}>
-                    <Image src={logo3} h={50} w={50}/>
-                </HStack>
-              </VStack>
-            </Box>
+              </Box>
             </Center>
             <Center>
-              <Box bgcolor={'white'} height={windowSize.height*0.97} width={windowSize.width*0.75} right={15} position={'fixed'} top={10} sx={{ flexGrow: 1 }} borderRadius={10}>
+              <Box bgcolor={'white'} height={windowSize.height * 0.97} width={windowSize.width * 0.75} right={15} position={'fixed'} top={10} sx={{ flexGrow: 1 }} borderRadius={10}>
                 <HStack p={10} justifyContent={"space-around"} verticalAlign={"center"}>
                   <VStack>
                     <h1>345678</h1>
                   </VStack>
                   <VStack>
                     <h1>345678</h1>
-                  </VStack>                  
+                  </VStack>
                 </HStack>
               </Box>
             </Center>
