@@ -53,7 +53,7 @@ const Register = () => {
       // const res = await registerUser(actualData)
       const res = await axios({
         method: 'post',
-        url: 'https://club-catalyst.onrender.com/api/v1/user/register',
+        url: `${process.env.REACT_APP_BACKEND_URI}/api/v1/user/register`,
         data: actualData,
       })
       localStorage.setItem('token', res.data.token)

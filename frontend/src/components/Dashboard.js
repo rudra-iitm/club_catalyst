@@ -26,7 +26,7 @@ const Dashboard = () => {
       headers: {
         'token': access_token
       },
-      url: 'https://club-catalyst.onrender.com/api/v1/user/details',
+      url: `${process.env.REACT_APP_BACKEND_URI}/api/v1/user/details`,
     })
       .then((response) => {
         setData(response.data.data);

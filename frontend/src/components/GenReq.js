@@ -45,7 +45,7 @@ const GenReq = () => {
       // const res = await registerUser(actualData)
       const res = await axios({
         method: 'post',
-        url: 'https://club-catalyst.onrender.com/api/v1/requests/submit',
+        url: `${process.env.REACT_APP_BACKEND_URI}/api/v1/requests/submit`,
         data: actualData,
       })
       // console.log(server_error)
