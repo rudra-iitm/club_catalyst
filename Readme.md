@@ -50,7 +50,9 @@ Install dependencies
 
 Setup environment variables
 
-<mark> copy .env.example to .env and set desired MONGO_URI (Mongo DB connection string) </mark>
+```bash
+  copy .env.example to .env and set desired MONGO_URI (Mongo DB connection string)
+```
 
 Run backend
 
@@ -76,7 +78,9 @@ Install dependencies
 
 Setup environment variables
 
-<mark> copy .env.example to .env </mark>
+```bash
+  copy .env.example to .env</b>
+```
 
 Run frontend
 
