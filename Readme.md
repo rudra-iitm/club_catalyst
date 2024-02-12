@@ -48,7 +48,9 @@ Install dependencies
   npm install
 ```
 
-copy env.example to .env and set desired MONGO_URI (Mongo DB connection string)
+Setup environment variables
+
+<mark> copy .env.example to .env and set desired MONGO_URI (Mongo DB connection string) </mark>
 
 Run backend
 
@@ -72,7 +74,9 @@ Install dependencies
   npm install
 ```
 
-copy env.example to .env
+Setup environment variables
+
+<mark> copy .env.example to .env </mark>
 
 Run frontend
 
