@@ -79,7 +79,7 @@ Install dependencies
 Setup environment variables
 
 ```bash
-  copy .env.example to .env</b>
+  copy .env.example to .env
 ```
 
 Run frontend
