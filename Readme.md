@@ -3,8 +3,8 @@
 ## Links
 
 - Website: https://club-catalyst.vercel.app/
-- Demo-Video: https://youtu.be/A_pl0w8m5-Y?feature=shared
-
+- Demo-Video: https://drive.google.com/file/d/1NlSutKyRI6fwRbvqWWEgu6d0DTzbk9fO/view?usp=drive_link
+  
 ## Overview
 
 This platform is designed to streamline the approval process for events and purchases within the student gymkhana office. It facilitates a structured workflow for approval automation, request generation, and data management.
