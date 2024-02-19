@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  mongoDB:
+    image: mongo:latest
+    container_name: mongoDB
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+    networks:
+      - club_catalyst
+
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "3001:3001"
+    environment:
+      PORT: 3001
+      MONGO_URI: mongodb://mongodb:27017
+      CORS_ORIGIN: http://localhost:3000
+      JWT_SECRET: my_secret_password
+      JWT_EXPIRE: 5d
+      COOKIE_EXPIRE: 5
+    depends_on:
+      - mongoDB
+    networks:
+      - club_catalyst
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_BACKEND_URI=http://localhost:3001
+    depends_on:
+      - backend
+    networks:
+      - club_catalyst
+
+volumes:
+  data:
+
+networks:
+  club_catalyst:
