@@ -30,7 +30,7 @@ To get started with the project locally, follow the steps below:
   git clone https://github.com/Rudra-IITM/club_catalyst
 ```
 
-### Using Docker
+## Using Docker
 
 If you prefer using Docker for managing the project environment, follow these instructions:
 
