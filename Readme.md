@@ -4,7 +4,7 @@
 
 - Website: https://club-catalyst.vercel.app/
 - Demo-Video: https://drive.google.com/file/d/1NlSutKyRI6fwRbvqWWEgu6d0DTzbk9fO/view?usp=drive_link
-  
+
 ## Overview
 
 This platform is designed to streamline the approval process for events and purchases within the student gymkhana office. It facilitates a structured workflow for approval automation, request generation, and data management.
@@ -20,13 +20,35 @@ This platform is designed to streamline the approval process for events and purc
 - Requests include monetary aspects, which determine the approval chain.
 - The portal supports text and attachments similar to an email.
 
-## Run Locally
+# Run Locally
 
-Clone the project
+To get started with the project locally, follow the steps below:
+
+## Clone the project
 
 ```bash
   git clone https://github.com/Rudra-IITM/club_catalyst
 ```
+
+### Using Docker
+
+If you prefer using Docker for managing the project environment, follow these instructions:
+
+1. Navigate to the project directory:
+
+```bash
+    cd club_catalyst
+```
+
+2. Ensure that Docker is installed on your system and the Docker daemon is running.
+
+3. Run the following command to start the project using Docker:
+
+```bash
+  docker-compose up -d # To run in detached terminal
+```
+
+## Manual Setup
 
 Go to the project directory
 
@@ -61,8 +83,6 @@ Run backend
   npm run dev
 ```
 
-This will start backend at PORT 3001 @ http://localhost:3001/
-
 ### Set up frontend
 
 Go to the frontend directory
@@ -90,4 +110,6 @@ Run frontend
   npm start
 ```
 
-This will start frontend at PORT 3000 @ http://localhost:3000/
+## Accessing the Application
+
+Once the project is running, you can access the frontend application at http://localhost:3000/ and the backend at http://localhost:3001/.
