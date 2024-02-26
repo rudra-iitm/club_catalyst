@@ -32,7 +32,7 @@ const Home = () => {
     };
   }, []);
   console.log(windowSize.width) // Empty dependency array ensures that this effect runs only once, similar to componentDidMount;
-  if(windowSize.width>200)
+  if(windowSize.width>800)
   {
   return (    
     <>
@@ -101,7 +101,58 @@ const Home = () => {
   {
     return(
     <>
-
+      <Box sx={{ flexGrow: 1 }}  bgcolor={"#6D31ED"} height={500} width={windowSize.width}>
+        <HStack>
+        <Box width={windowSize.width}>
+          <Center>
+          <VStack>
+            <Text as={"h1"} color={'white'} paddingLeft={100} paddingRight={100} paddingTop={100} align={'center'} fontWeight={'bold'}>
+              Welcome to Student Gymkhana
+            </Text>
+            <Text as={"h5"} color={'white'} padding={10} align={'center'} fontWeight={'bold'}>
+            Payment processing platform that facilitates transactions between faculty advisors and dean with club coordinators and secretaries.
+            </Text>          
+          </VStack>
+          </Center>
+        </Box>
+        </HStack>
+      </Box>
+      <Box sx={{ flexGrow: 1 }}  bgcolor={"white"} height={250} width={windowSize.width}>
+      <HStack>
+        
+        <Box width={windowSize.width} pt={4}>
+          <Center>
+          <VStack>
+            <Text as={"h3"} color={'black'} paddingLeft={10} paddingRight={10} paddingTop={10} align={'center'} fontWeight={'bold'}>
+              Contact Us
+            </Text>
+            <HStack pl={42}>
+              <PhoneIcon/>
+              <Text as={"h6"} color={'black'}  paddingRight={10} paddingTop={10} align={'center'} >
+              Phone : 0000000001
+            </Text>
+            </HStack>
+            <HStack pl={60}>
+              <EmailIcon/>
+              <Text as={"h6"} color={'black'}  paddingRight={10} paddingTop={10} align={'center'} >
+              Email : abc@gmai.com
+            </Text>
+            </HStack>
+            {/* <Text as={"h7"} color={'black'} padding={10} align={'center'} fontWeight={'bold'}>
+            Payment processing platform that facilitates transactions between faculty advisors and dean with club coordinators and secretaries.
+            </Text>           */}
+          </VStack>
+          </Center>
+        </Box>
+        </HStack>
+      </Box>
+      <Box sx={{ flexGrow: 1 }}  bgcolor={"black"} height={100} width={windowSize.width}>
+        <Center>
+          <Text as={"h6"} color={'white'} pt={38}>
+            Copyright © 2024 - Digital & Computing Services, IIT Mandi
+          </Text>
+        </Center>
+      </Box>
     </>
     )
   }
