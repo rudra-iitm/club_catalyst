@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert'
 import { useSentResetLinkMutation } from "../services/userAuthApi";
@@ -42,9 +42,31 @@ const ForgetPass = () => {
   }
   };
 
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    // Attach event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); // Empty dependency array ensures that this effect runs only once, similar to componentDidMount
   return (
+    <Box width={'hvw'} height={windowSize.height*0.892} bgColor={"#6D31ED"} p={20}>
     <Center>
-    <Box height={260} width={470} marginTop={110} bgColor='#ACCDF3' border="GrayText" borderRadius={10} p={26}>
+    <Box height={'full'} width={'full'} marginTop={110} bgColor='#ACCDF3' border="GrayText" borderRadius={10} p={26}>
     <form>
     <Center><h3><b>Reset Password</b></h3></Center>
         <div className="mb-3">
@@ -70,6 +92,7 @@ const ForgetPass = () => {
     </Box>
     </Box>
     </Center>
+    </Box>
   )
 }
 

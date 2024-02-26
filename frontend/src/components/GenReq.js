@@ -63,6 +63,7 @@ const GenReq = () => {
     }
   };
   return (
+    <Box width={'hvw'} height={'full'} bgColor={"#6D31ED"} p={20}>
     <Center>
       <Box height={580} width={470} marginTop={10} bgColor='#ACCDF3' border="GrayText" borderRadius={10} p={36}>
         <form id="register">
@@ -117,10 +118,11 @@ const GenReq = () => {
           </div>
         </form>
         <Box mt={10}>
-          {server_error.non_field_errors ? <Alert severity='error'>{server_error.non_field_errors[0]}</Alert> : <Alert severity="info">{"Fill above information then click SignUp"}</Alert>}
+          {server_error.non_field_errors ? <Alert severity='error'>{server_error.non_field_errors[0]}</Alert> : <Alert severity="info">{"Fill above information then click to Raise Request"}</Alert>}
         </Box>
       </Box>
     </Center>
+    </Box>
   );
 }
 export default GenReq
