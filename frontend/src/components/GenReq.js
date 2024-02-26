@@ -63,9 +63,9 @@ const GenReq = () => {
     }
   };
   return (
-    <Box width={'hvw'} height={'full'} bgColor={"#6D31ED"} p={20}>
+    <Box width={'hvw'} height={'full'} bgColor={"#6D31ED"} p={40} py={80}>
     <Center>
-      <Box height={580} width={470} marginTop={10} bgColor='#ACCDF3' border="GrayText" borderRadius={10} p={36}>
+      <Box height={'full'} width={'full'} marginTop={10} bgColor='#ACCDF3' border="GrayText" borderRadius={10} p={36}>
         <form id="register">
           <Center><h3><b>Request</b></h3></Center>
           <div className="mb-3">

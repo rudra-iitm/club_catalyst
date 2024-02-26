@@ -103,7 +103,7 @@ const Home = () => {
     <>
       <Box sx={{ flexGrow: 1 }}  bgcolor={"#6D31ED"} height={500} width={windowSize.width}>
         <HStack>
-        <Box width={windowSize.width}>
+        <Box width={windowSize.width} pt={7}>
           <Center>
           <VStack>
             <Text as={"h1"} color={'white'} paddingLeft={100} paddingRight={100} paddingTop={100} align={'center'} fontWeight={'bold'}>
@@ -120,7 +120,7 @@ const Home = () => {
       <Box sx={{ flexGrow: 1 }}  bgcolor={"white"} height={250} width={windowSize.width}>
       <HStack>
         
-        <Box width={windowSize.width} pt={4}>
+        <Box width={windowSize.width} pt={5}>
           <Center>
           <VStack>
             <Text as={"h3"} color={'black'} paddingLeft={10} paddingRight={10} paddingTop={10} align={'center'} fontWeight={'bold'}>
@@ -146,7 +146,7 @@ const Home = () => {
         </Box>
         </HStack>
       </Box>
-      <Box sx={{ flexGrow: 1 }}  bgcolor={"black"} height={100} width={windowSize.width}>
+      <Box sx={{ flexGrow: 1 }}  bgcolor={"black"} height={118} width={windowSize.width} pb={4} px={2}>
         <Center>
           <Text as={"h6"} color={'white'} pt={38}>
             Copyright © 2024 - Digital & Computing Services, IIT Mandi
