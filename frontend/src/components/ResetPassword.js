@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {Box,Text, Center, VStack } from "@chakra-ui/react";
 import Alert from '@mui/material/Alert'
 import { useResetPasswordMutation } from "../services/userAuthApi";
@@ -50,9 +50,33 @@ const ResetPassword = () => {
     }
   }
   };
+  
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    // Attach event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); // Empty dependency array ensures that this effect runs only once, similar to componentDidMount
+  
   return (
+    <Box width={'hvw'} bgColor={"#6D31ED"} p={60} height={windowSize.height*.893}>
     <Center>
-    <Box height={350} width={470} marginTop={100} bgColor='#ACCDF3' border="GrayText" borderRadius={10} p={28}>
+    <Box height={'full'} width={'full'} marginTop={60} bgColor='#ACCDF3' border="GrayText" borderRadius={10} p={28}>
     <form>
     <Center><h3><b>Reset Password</b></h3></Center>
         <div className="mb-3">
@@ -81,15 +105,16 @@ const ResetPassword = () => {
         </div>
          <div className="d-grid">
            <button type="button" className="btn btn-primary" onClick={handleReset}>
-             Submit
+             Reset
            </button>
          </div>
     </form>
     <Box mt={10}>
-    {server_error.non_field_errors ? <Alert severity='error'>{server_error.non_field_errors[0]}</Alert> : <Alert severity="info">{"Fill above information then click Submit"}</Alert>}
+    {server_error.non_field_errors ? <Alert severity='error'>{server_error.non_field_errors[0]}</Alert> : <Alert severity="info">{"Fill above information then click to Reset Password"}</Alert>}
     </Box>
     </Box>
     </Center>
+    </Box>
   )
 }
 

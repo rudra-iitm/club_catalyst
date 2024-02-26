@@ -30,12 +30,13 @@ const Home = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []); // Empty dependency array ensures that this effect runs only once, similar to componentDidMount
-
-  return (
-    
+  }, []);
+  console.log(windowSize.width) // Empty dependency array ensures that this effect runs only once, similar to componentDidMount;
+  if(windowSize.width>200)
+  {
+  return (    
     <>
-      <Box sx={{ flexGrow: 1 }}  bgcolor={"#6D31ED"} height={500}>
+      <Box sx={{ flexGrow: 1 }}  bgcolor={"#6D31ED"} height={500} width={windowSize.width}>
         <HStack>
         <Box width={windowSize.width}>
           <Center>
@@ -56,7 +57,7 @@ const Home = () => {
           </Box>
         </HStack>
       </Box>
-      <Box sx={{ flexGrow: 1 }}  bgcolor={"white"} height={250}>
+      <Box sx={{ flexGrow: 1 }}  bgcolor={"white"} height={250} width={windowSize.width}>
       <HStack>
         <Box width={windowSize.width}>
           <Image src={logo4 } h={200} w={230} mt={10} ml={40}/>
@@ -87,7 +88,7 @@ const Home = () => {
         </Box>
         </HStack>
       </Box>
-      <Box sx={{ flexGrow: 1 }}  bgcolor={"black"} height={100}>
+      <Box sx={{ flexGrow: 1 }}  bgcolor={"black"} height={100} width={windowSize.width}>
         <Center>
           <Text as={"h6"} color={'white'} pt={38}>
             Copyright © 2024 - Digital & Computing Services, IIT Mandi
@@ -95,7 +96,15 @@ const Home = () => {
         </Center>
       </Box>
     </>
-  )
+  )}
+  else
+  {
+    return(
+    <>
+
+    </>
+    )
+  }
 }
 
 export default Home

@@ -41,7 +41,7 @@ const Navbar = () => {
  if(windowSize.width > 1250) {
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1 }} width={windowSize.width}>
         <AppBar position="static" color="inherit">
           <Toolbar>
             <Image src={logo2} h={40} w={45}/>
@@ -67,7 +67,7 @@ const Navbar = () => {
   {
     return (
       <>
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1 }}width={windowSize.width}>
           <AppBar position="static" color="inherit">
             <Toolbar>
             <Image src={logo2} h={40} w={45}/>
@@ -92,7 +92,7 @@ const Navbar = () => {
   else
   {
     return(
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1 }} width={windowSize.width}>
           <AppBar position="fixed" color="inherit">
             <Center display={"flex"} flexDirection={"row"}>
             <Toolbar>
