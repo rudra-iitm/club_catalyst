@@ -164,7 +164,7 @@ if(windowSize.width>650)
 else if(windowSize.width>100){
   return(
     <>
-    <Box width={windowSize.width} bgColor={"#6D31ED"} p={20} >
+    <Box width={windowSize.width} bgColor={"#6D31ED"} p={10} py={60} >
      <Box height={'hvh'} width={'full'} marginTop={40} ml={30} mr={20} bgColor='#B9B2FE' border="GrayText" borderRadius={10} p={36}>
             <form>
               <Center><h3><b>Sign In</b></h3></Center>

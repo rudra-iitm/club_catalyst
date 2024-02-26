@@ -95,7 +95,7 @@ const Register = () => {
   }, []); // Empty dependency array ensures that this effect runs only once, similar to componentDidMount
   if(windowSize.width>550){
   return (
-    <Box width={'hvw'} bgColor={"#6D31ED"} p={20}>
+    <Box width={'hvw'} bgColor={"#6D31ED"} p={20} py={30}>
     <Center display={"flex"} flexDirection={"row"} left={'37%'}>
       <Box height={'full'} width={'full'} marginTop={10} bgColor='#ACCDF3' border="GrayText" borderRadius={10} p={36} display={"flex"} flexDirection={"column"} m={10}>
         <form id="register">
@@ -193,7 +193,7 @@ const Register = () => {
     </Box>
   )
   }
-  else{return(<>    <Box width={'hvw'} bgColor={"#6D31ED"} p={20}>
+  else{return(<>    <Box width={'hvw'} bgColor={"#6D31ED"} p={20} py={100}>
   <Center display={"flex"} flexDirection={"row"} left={'37%'}>
     <Box height={'full'} width={'full'} marginTop={10} bgColor='#ACCDF3' border="GrayText" borderRadius={10} p={36} display={"flex"} flexDirection={"column"} m={10}>
       <form id="register">
